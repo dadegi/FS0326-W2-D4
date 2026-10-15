@@ -93,12 +93,89 @@ const myWord = document.querySelector('#myWord');
 const myPhrase = document.querySelector('#myPhrase');
 
 function splitString() {
-    let word = 'Epicode';
-    let phrase = 'Ciao, Mondo, siamo FS0326';
-    myWord.textContent = word.split('');
-    myPhrase.textContent = phrase.split(',');
-    console.log(word.split(''));
-    console.log(phrase.split(','))
+	let word = 'Epicode';
+	let phrase = 'Ciao, Mondo, siamo FS0326';
+	myWord.textContent = word.split('');
+	myPhrase.textContent = phrase.split(',');
+	console.log(word.split(''));
+	console.log(phrase.split(','));
 }
 
 splitString();
+
+const initialEmail = document.querySelector('#initialEmail');
+const normalizedEmail = document.querySelector('#normalizedEmail');
+let normalEmail;
+
+function normalizeEmail(emailAddress = '') {
+	initialEmail.textContent += emailAddress;
+	emailAddress = emailAddress.trim();
+	const myStringArray = emailAddress.split('');
+	console.log(myStringArray);
+	for (let i = 0; i < myStringArray.length; i++) {
+		if (myStringArray[i] === ' ') {
+			myStringArray.splice(i, 1);
+		}
+	}
+	console.log(myStringArray);
+	emailAddress = myStringArray.join('');
+	normalEmail = emailAddress;
+	normalizedEmail.textContent += normalEmail;
+}
+
+normalizeEmail('   p i ppo @ email . com   ');
+console.log(normalEmail);
+
+const myDateArray = [20, 10, 1967];
+
+let myBirthDate = myDateArray.join('/');
+console.log(myBirthDate);
+
+const today = new Date();
+console.log(today);
+
+const thisDay = today.getDay();
+
+switch (thisDay) {
+	case 0:
+		console.log('Oggi è domenica');
+		break;
+
+	case 1:
+		console.log('Oggi è lunedì');
+		break;
+
+	case 2:
+		console.log('Oggi è martedì');
+		break;
+
+	case 3:
+		console.log('Oggi è mercoledì');
+		break;
+
+	case 4:
+		console.log('Oggi è giovedì');
+		break;
+
+	case 5:
+		console.log('Oggi è venerdì');
+		break;
+
+	case 6:
+		console.log('Oggi è sabato');
+		break;
+}
+
+const initialDate = new Date(2026, 9, 5);
+console.log(initialDate);
+
+const birthDate = document.querySelector('#birthDate');
+let newBirthDate = new Date(1967, 9, 20);
+newBirthDate = newBirthDate.toLocaleDateString('it-IT', {
+	weekday: 'long',
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric',
+});
+
+birthDate.textContent += newBirthDate;
